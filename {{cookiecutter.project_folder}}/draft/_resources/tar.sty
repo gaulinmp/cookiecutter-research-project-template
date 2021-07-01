@@ -1,0 +1,78 @@
+% Formatting for The Accounting Review
+
+% Citation style
+\setcitestyle{citesep={;},aysep={}}
+
+\makeatletter
+
+% Number formatting
+\renewcommand \thesection       {\@Roman\c@section}
+\renewcommand \thesubsection    {\@Roman\c@section}
+\renewcommand \thesubsubsection {\@Roman\c@section}
+\renewcommand \thetable         {\@Roman\c@table}
+\renewcommand \thefigure        {\@Roman\c@figure}
+
+% Heading formatting
+
+% Heading numbering (omit for all sub sections)
+\DeclareRobustCommand{\@seccntformat}[1]{%
+  \def\tmpvar@in{#1}%                % Input section name
+  \def\tmpvar@sec{section}%          % string = 'section'
+  \ifx\tmpvar@in\tmpvar@sec%         % Compare input to 'section'
+  \csname the#1\endcsname .\enskip%  % if section in, display
+  \else%                             % Otherwise omit
+  \fi}
+
+% Section header format
+\renewcommand{\section}{\@startsection
+  {section}%                          % name
+  {1}%                                % level
+  {\z@}%                              % indent
+  {-2.5ex \@plus -1ex \@minus -.5ex}% % beforeskip
+  {1.0ex \@plus .5ex \@minus .5ex}%   % afterskip
+  {\centering\bfseries}%              % style
+  }
+
+% Subsection header format
+\renewcommand{\subsection}{\@startsection
+  {subsection}%                       % name
+  {2}%                                % level
+  {\z@}%                              % indent
+  {-1ex \@plus -.5ex \@minus -.2ex}%  % beforeskip
+  {1ex \@plus .5ex \@minus .5ex}%     % afterskip
+  {\bfseries}%                        % style
+  }
+
+% Subsubsection header format
+\renewcommand{\subsubsection}{\@startsection
+  {subsubsection}%                    % name
+  {3}%                                % level
+  {\z@}%                              % indent
+  {-1ex \@plus -.5ex \@minus -.2ex}%  % beforeskip
+  {1ex \@plus .5ex \@minus .5ex}%     % afterskip
+  {\bfseries\itshape}%                % style
+  }
+
+
+
+% Appendix formatting:
+
+\def\appendix{\par\clearpage %
+ % reset section, subsection, and subsubsection counters
+ \setcounter{section}{0}%
+ \setcounter{subsection}{0}%
+ \setcounter{subsubsection}{0}%
+ % Use A, B, C, etc for numbering appendices
+ \gdef\thesection{\@Alph\c@section}%
+ % Set title to be "Appendix A. "
+ \renewcommand{\@seccntformat}[1]{Appendix \csname the##1\endcsname.\enskip}%
+}
+
+
+\makeatother
+
+% Also format the post counters if enddable is being used
+\renewcommand{\theposttable}{\Roman{posttbl}}
+\renewcommand{\thepostfigure}{\Roman{postfig}}
+\renewcommand{\thefigure}{\Roman{figure}}
+\renewcommand{\thetable}{\Roman{table}}

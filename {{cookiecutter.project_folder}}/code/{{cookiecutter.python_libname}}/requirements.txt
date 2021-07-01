@@ -1,0 +1,8 @@
+psycopg2
+sqlalchemy
+notebook
+numpy
+pandas
+
+# Research Library from github.com/gaulinmp/reslib
+reslib

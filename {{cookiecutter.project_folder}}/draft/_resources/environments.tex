@@ -1,0 +1,47 @@
+\newenvironment{papertable}[2]{ % Begin begin papertable
+	\newcommand{\postamblevardef}{Variables are defined in Appendix \ref{app:vardef}.}
+	\newcommand{\postamblesig}{***, **, and * indicate significance at the 0.01, 0.05, and 0.10 level, respectively.}
+	\newcommand{\postamble}{\postamblevardef \ \postamblesig}
+	\newcommand{\startdata}{\centering \skipline \tablesize}
+	\newcommand{\splittable}{\end{table} \clearpage \begin{table}[th] \startdata}
+	\newcommand{\splittablesamepage}{\end{table} \begin{table}[th] \startdata}
+	\begin{table}[th]
+	\addcontentsline{toc}{section}{Table #2: #1}
+	\caption{\textbf{#1}}
+	\phantomsection
+    \footnotesize
+}{ % Begin end papertable
+	\end{table}
+% 	\egroup
+} % End end papertable
+
+\newenvironment{landscapepapertable}[2]{ % Begin begin landscapepapertable
+    \newcommand{\lstbegin}{\begin{landscape}}
+    \newcommand{\lstend}{\end{landscape}}
+	\newcommand{\postamblevardef}{Variables are defined in Appendix \ref{app:vardef}.}
+	\newcommand{\postamblesig}{ ***, **, and * indicate significance at the 0.01, 0.05, and 0.10 level, respectively.}
+	\newcommand{\postamble}{\postamblevardef \ \postamblesig}
+	\newcommand{\startdata}{\centering \skipline \tablesize}
+	\newcommand{\splittable}{%
+	    \end{table}%
+	    \lstend{}%
+	    \clearpage%
+	    \begin{landscape}%
+	    \begin{table}[th]%
+	    \startdata%
+	} % End \splittable
+    \clearpage
+% 	\bgroup
+    \begin{landscape}
+	% \def\arraystretch{1.2}
+ 	% \setlength\tabcolsep{.1em}
+	\begin{table}[th]
+	\addcontentsline{toc}{section}{Table #2: #1}
+	\caption{\textbf{#1}}
+	\phantomsection
+    \footnotesize
+}{ % Begin end landscapepapertable
+	\end{table}
+	\end{landscape}
+% 	\egroup
+} % End end landscapepapertable

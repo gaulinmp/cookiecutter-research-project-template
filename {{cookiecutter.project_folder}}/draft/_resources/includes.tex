@@ -1,0 +1,100 @@
+% -------------------------------------------------------------
+% Create Options
+% -------------------------------------------------------------
+% . PDF properties
+%\pdfinterwordspaceon
+%\pdfminorversion=8
+
+\usepackage[utf8]{inputenc}
+
+\RequirePackage{amsmath}
+\RequirePackage{amsthm}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{etoolbox}
+
+
+% \RequirePackage{lscape}
+% \RequirePackage{multicol}
+% \RequirePackage{bm}
+% \RequirePackage{multirow}
+
+
+% 1 inch margins
+\RequirePackage[left=1.0in,right=1.0in,top=1.0in,bottom=1.0in]{geometry}
+
+
+% Sundry formatting
+\RequirePackage{graphicx}
+\RequirePackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\RequirePackage{setspace}
+\RequirePackage[hang,flushmargin]{footmisc}
+    \setlength{\footnotesep}{\baselineskip}
+\RequirePackage{microtype}
+    \DisableLigatures[f]{}
+    % disable those annoying fi ligature characters. Kerning is overrated.
+
+
+
+% Add link packages, xr-hyper before hyperref as per instructions
+\RequirePackage{xr-hyper}
+\RequirePackage[colorlinks=true,hyperfootnotes=true,raiselinks=true,breaklinks=false,allcolors=blue]{hyperref}
+    % From JF example tex
+    \hypersetup{colorlinks=false,raiselinks=true,breaklinks=false,citecolor=black}
+
+
+% References
+\RequirePackage[english]{babel}
+\RequirePackage[round,longnamesfirst]{natbib}
+\bibliographystyle{./_resources/tar}
+
+
+% Table formatting
+\RequirePackage{dcolumn}
+\RequirePackage{pdflscape}
+\RequirePackage{longtable}
+    % Roman Numerals
+    \renewcommand*\thetable{\Roman{table}}
+    \renewcommand*\thefigure{\Roman{figure}}
+\RequirePackage{tabularx}
+    \newcolumntype{Y}{>{\centering\arraybackslash}X}
+\RequirePackage{booktabs}
+
+
+% Captions
+\RequirePackage[center,large,bf]{caption}
+\RequirePackage{subcaption}
+    % \renewcommand*{\thesubfigure}{Figure \thefigure.\Alph{subfigure})}
+    % \renewcommand\thesubfigure{Figure \thefigure.\Alph{subfigure}}
+
+\RequirePackage[title]{appendix}
+\RequirePackage{abstract}
+    \renewcommand\abstractname{\bf{ABSTRACT}}
+    \date{}
+
+
+
+
+% IA to main table references
+% \RequirePackage{xr}
+
+
+% Advanced section header editing
+% \RequirePackage{sectsty}
+% Advanced title and section header editing
+% \RequirePackage{titlesec}
+    % \titleformat{\section}{\singlespace\centering\normalfont\Large\bfseries}{\thesection .}{1em}{}
+    % \titleformat{\subsection}{\singlespace\normalfont\large\itshape}{\thesubsection .}{1em}{}
+    % \titleformat{\subsubsection}{\singlespace\centering\normalfont\itshape}{\thesubsubsection .}{0.5em}{}
+    % These are set in jf.sty...?
+    % \renewcommand{\thesection}{\Roman{section}}
+    % \renewcommand{\thesubsection}{\Alph{subsection}}
+    % \renewcommand{\thetable }{\Roman{table}}
+
+
+\widowpenalty10000
+\clubpenalty10000
+
+% This gets run from ../ by the main file.
+\input{./_resources/commands}
+\input{./_resources/environments}

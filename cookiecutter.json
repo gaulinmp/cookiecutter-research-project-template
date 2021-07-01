@@ -1,0 +1,12 @@
+{
+  "paper_title": "Academic Research Project",
+  "project_acronym": "ARP",
+  "python_libname": "{{ cookiecutter.project_acronym.lower() }}",
+  "full_name": "Maclean Gaulin",
+  "email": "mac.gaulin@utah.edu",
+  "author_lastnames": "Gaulin,Peng",
+  "project_folder": "{{ cookiecutter.project_acronym.upper() + '_' + cookiecutter.author_lastnames.replace(' ', '_').replace(',', '_') }}",
+  "_copy_without_render": [
+      "*_resources"
+  ]
+}

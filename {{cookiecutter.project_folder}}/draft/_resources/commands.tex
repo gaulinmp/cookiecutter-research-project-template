@@ -1,0 +1,74 @@
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+%\def\sym#1{#1}
+
+% Allows for \skipline to do just that.
+\newcommand{\skipline}{\vspace{12pt}}
+
+% Allows for \skipline to do just that.
+\newcommand{\italhref}[2]{\href{#1}{\textit{#2}}}
+\newcommand{\bluehref}[2]{\href{#1}{\color{blue}{#2}}}
+
+% Add outline command for paragraph overview
+\newcounter{outline}
+\newcommand{\outline}[1]%
+  {%
+    \noindent %
+    {\begin{singlespace} %
+        \refstepcounter{outline}% Increment outline counter
+        \color{blue}{\textit{\hspace{-48pt}\theoutline) #1}} % outline text in italics
+        \addcontentsline{tod}{subsection}{outline~\theoutline} % Add to TOC
+    \end{singlespace}}%
+  }
+\makeatletter
+    \newcommand\outlinename{outline}
+    \newcommand\listoutlinename{List of outlines}
+    \newcommand\listofoutlines{%
+      \section*{\listoutlinename}\@starttoc{tod}}
+\makeatother
+
+
+% Uncomment to hide outline text
+% \renewcommand{\outline}[1]{}
+
+
+% Adds \TODO{text} command that shows work-in-progress comments but can be easily turned off
+\newcounter{todo}
+\newcommand{\ttred}[1]{\color{red}{#1}}
+\newcommand{\TODO}[1]%
+  {%
+    {%
+        \refstepcounter{todo}% Increment todo counter
+        \marginpar{\ttred{TODO \thetodo}}% TODO in text margin
+        \textbf{\ttred{#1}}% Bold red inline text
+        \addcontentsline{tod}{subsection}{TODO~\thetodo}% Add to TOC
+    }%
+  }
+\makeatletter
+    \newcommand\todoname{todo}
+    \newcommand\listtodoname{List of todos}
+    \newcommand\listoftodos{%
+      \section*{\listtodoname}\@starttoc{tod}}
+\makeatother
+
+
+% Add \monyear command to show current date as: Month, Year
+\newcommand{\monyear}{\ifcase \month \or January\or February\or March\or April\or May \or June\or July\or August\or September\or October\or November\or December\fi, \the\year}
+
+% Add a \tablesize variable to set all table text to
+\newcommand{\tablesize}{\scriptsize}
+
+% Short hand for multicolumns
+\newcommand{\mc}[2]{\multicolumn{#1}{c}{#2}}
+\newcommand{\ml}[2]{\multicolumn{#1}{l}{#2}}
+
+% This allows for the definition of a variable after its first use.
+% For example using an economic significance in the intro, and defining it in the results section.
+% Define the variable at the top of the file to avoid forgetting to define it later:
+%     example: \def \varname {\marginpar{COMPILE ERROR}}
+%              \laterdef{\varname}{50\%}
+\makeatletter
+\newcommand{\laterdef}[2]{%
+  \protected@write\@auxout{}{\gdef\string#1{#2}}}
+\makeatother
+
+
